@@ -105,10 +105,10 @@ Contributions are welcome! If you'd like to contribute to Clashopia, follow thes
 If you have any questions or feedback, feel free to reach out:
 
 - **Your Name**  
-- **GitHub**: [your-username](https://github.com/your-username)  
-- **Email**: your-email@example.com  
+- **GitHub**: [wasiqAfnan](https://github.com/your-username)  
+- **Email**: wansari964@yahoo.com  
 
 ---
 
 **Happy Clashing!** ⚔️🃏
-```
+---
