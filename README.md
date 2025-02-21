@@ -5,7 +5,12 @@ No problem! If you're now building a website for **Clash Royale** instead of Cla
 ```markdown
 # Clashopia 🃏⚔️
 
-**Clashopia** is a dynamic web platform for Clash Royale fans, offering detailed stats and strategies for every card in the game. Built with modern web technologies, Clashopia features a user-friendly interface, a search bar, dynamic card rendering, and a 'Load More' button for seamless exploration. Each card links to a dedicated page with in-depth stats, making it easy to plan your deck and dominate the arena. Dive into Clashopia and take your Clash Royale skills to the next level!
+**Clashopia** is a dynamic web platform for Clash Royale fans, offering detailed stats and strategies for every card in the game. 
+
+Built with modern web technologies, Clashopia features a user-friendly interface, a search bar, dynamic card rendering, and a 'Load More' button for seamless exploration. 
+
+Each card links to a dedicated page with in-depth stats, making it easy to plan your deck and dominate the arena. 
+Dive into Clashopia and take your Clash Royale skills to the next level!
 
 ![Clashopia Screenshot](#) <!-- Add a screenshot of your project here -->
 
