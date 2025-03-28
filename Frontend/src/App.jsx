@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
+import NavigationBar from "./components/Navbar";
+import CardList from "./components/CardList";
 
 function App() {
   return (
     <>
-      <Navbar/>
-    </>
+    <NavigationBar />
+    <CardList />
+  </>
   );
 }
 
