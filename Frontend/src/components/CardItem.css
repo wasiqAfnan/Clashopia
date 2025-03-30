@@ -1,0 +1,21 @@
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+  }
+
+ 
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card img {
+    width: 100%; /* Ensure full width */
+    height: 250px; /* Fixed height */
+    object-fit: contain; /* Fill the space without distortion */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    }
+  

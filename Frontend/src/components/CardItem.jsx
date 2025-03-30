@@ -1,19 +1,27 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import "./CardItem.css";
+import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function CardItem({ card }) {
   return (
-    <Card className="my-3 shadow-sm">
+    <Card bg="light" className="my-3 shadow-sm">
       <Card.Img
         variant="top"
-        src={card.image} // Ensure API provides the correct image URL
+        src={card.iconUrls.medium} // Ensure API provides the correct image URL
         alt={card.name}
         onError={(e) => (e.target.src = "/placeholder.jpg")} // Fallback image
-        style={{ height: "200px", objectFit: "cover" }} // Ensure consistent size
       />
       <Card.Body>
-        <Card.Title>{card.name}</Card.Title>
-        <Card.Text>{card.description}</Card.Text>
+        <Card.Title className="fw-bold">{card.name}</Card.Title>
+        <Card.Text> Rarirty: <span className="fw-bold" style={{ textTransform: 'capitalize' }}>{card.rarity}</span></Card.Text>
+
+        {/* Button to navigate to details page */}
+        
+        <Link to={`/card/${card.id}`} state={{ card }}>
+          <Button variant="warning" className="mt-2">View Details</Button>
+        </Link>  
+              
       </Card.Body>
     </Card>
   );
