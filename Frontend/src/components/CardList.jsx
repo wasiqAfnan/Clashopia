@@ -1,36 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 import CardItem from "./CardItem";
-import Loader from "./Loader"; // Import Loader
-
+import Loader from "./Loader";
 
 function CardList() {
-  const [cards, setCards] = useState([]); // Store fetched cards
+  const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // for Loader implementation
-  const [page, setPage] = useState(1); // Track current page
-  const [hasMore, setHasMore] = useState(true); // Track if more cards exist
-
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
-    fetchCards(page); // Fetch initial data (page=1)
+    fetchCards(); // loads page 1
   }, []);
 
-  // Function to fetch cards based on page
-  const fetchCards = async (pageNum) => {
+
+  // Fetch cards for a given page number
+  const fetchCards = async () => {
     setLoading(true);
     try {
-      console.log(`Fetching: https://your-backend.com/api/cards?page=${pageNum}&limit=15`);
       const response = await axios.get(`https://clashopia.onrender.com/api/cards`, {
-        params: { page: pageNum, limit: 15 }
+        params: { page, limit: 15 },
       });
-      console.log(response)
-      if (response.data.data.length > 0) {
-        setCards((prevCards) => [...prevCards, ...response.data.data]); // Append new cards
+
+      const newCards = response.data.data;
+      console.log(newCards);
+      
+
+      // Prevent duplicates using Set
+      setCards((prevCards) => {
+        const existingIds = new Set(prevCards.map((card) => card.id));
+        const uniqueCards = newCards.filter((card) => !existingIds.has(card.id));
+        return [...prevCards, ...uniqueCards];
+      });
+
+      // If no new cards, we stop further loading
+      if (newCards.length === 0) {
+        setHasMore(false);
       } else {
-        setHasMore(false); // No more cards to load
+        setPage((prev) => prev + 1); // Only increase if data comes
       }
     } catch (error) {
       console.error("Error fetching cards:", error);
@@ -39,29 +47,25 @@ function CardList() {
     }
   };
 
-  // Handle Load More button click
   const handleLoadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    fetchCards(nextPage);
+    fetchCards(); // will auto use latest `page` state
   };
 
   return (
     <Container>
       <h2 className="text-center my-4">Clash Royale Cards</h2>
       {loading && page === 1 ? (
-        <Loader loading={loading} /> // Show loader while fetching
+        <Loader loading={loading} />
       ) : (
         <>
           <Row>
-            {cards.map((card, index) => (
-              <Col key={`${card.id}-${index}`} sm={12} md={6} lg={4}>
+            {cards.map((card) => (
+              <Col key={card.id} sm={12} md={6} lg={4}>
                 <CardItem card={card} />
               </Col>
             ))}
           </Row>
 
-          {/* Load More Button - Only show if more cards exist */}
           {hasMore && (
             <div className="text-center mt-4">
               <Button variant="primary" onClick={handleLoadMore} disabled={loading}>
