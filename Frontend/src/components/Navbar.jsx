@@ -28,7 +28,7 @@ function NavigationBar() {
 
           {/* Right - Signature */}
           <Col xs={4} className="text-end">
-            <Navbar.Text className="text-light" style={{ fontSize: "1.2rem" }}>
+            <Navbar.Text className="text-light" >
               Made with ❤️ by Wasiq Afnan
             </Navbar.Text>
           </Col>

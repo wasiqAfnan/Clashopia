@@ -28,11 +28,19 @@ function CardList() {
       
 
       // Prevent duplicates using Set
-      setCards((prevCards) => {
-        const existingIds = new Set(prevCards.map((card) => card.id));
-        const uniqueCards = newCards.filter((card) => !existingIds.has(card.id));
-        return [...prevCards, ...uniqueCards];
-      });
+
+      if(newCards.length > 0){
+        setCards((prevCards) => {
+          const existingIds = new Set(prevCards.map((card) => card.id));
+          const uniqueCards = newCards.filter((card) => !existingIds.has(card.id));
+          return [...prevCards, ...uniqueCards];
+        });
+
+        if(newCards.length < 15){
+          setHasMore(false);
+        }
+      }
+      
 
       // If no new cards, we stop further loading
       if (newCards.length === 0) {
