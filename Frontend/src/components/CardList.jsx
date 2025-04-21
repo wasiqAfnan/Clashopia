@@ -76,7 +76,7 @@ function CardList() {
 
           {hasMore && (
             <div className="text-center mt-4 mb-4">
-              <Button variant="primary" onClick={handleLoadMore} disabled={loading}>
+              <Button variant="dark" onClick={handleLoadMore} disabled={loading}>
                 {loading ? "Loading..." : "Load More"}
               </Button>
             </div>

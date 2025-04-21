@@ -1,29 +1,52 @@
-import React from "react";
+import React, {useState} from "react";
 import "./CardItem.css";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import CardDetailsModal from "./cardDetailsModal";
 
 function CardItem({ card }) {
-  return (
-    <Card bg="light" className="my-3 shadow-sm">
-      <Card.Img
-        variant="top"
-        src={card.iconUrls.medium} // Ensure API provides the correct image URL
-        alt={card.name}
-        onError={(e) => (e.target.src = "/placeholder.jpg")} // Fallback image
-      />
-      <Card.Body>
-        <Card.Title className="fw-bold">{card.name}</Card.Title>
-        <Card.Text> Rarirty: <span className="fw-bold" style={{ textTransform: 'capitalize' }}>{card.rarity}</span></Card.Text>
+  const [showModal, setShowModal] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
+  
+  const handleShowModal = (card) => {
+    setSelectedCard(card);
+    setShowModal(true);
+  };
+  
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedCard(null);
+  };
+  
 
-        {/* Button to navigate to details page */}
-        
-        <Link to={`/card/${card.id}`} state={{ card }}>
-          <Button variant="warning" className="mt-2">View Details</Button>
-        </Link>  
-              
-      </Card.Body>
-    </Card>
+  return (
+    <>
+      <Card className="mb-4 shadow-sm">
+        <Card.Img
+          variant="top"
+          src={card.iconUrls?.medium || "/placeholder.jpg"}
+          alt={card.name}
+          style={{ height: "200px"}}
+        />
+        <Card.Body>
+          <Card.Title className="fw-bold">{card.name}</Card.Title>
+          <Card.Text>
+            Rarity: <span className="fw-bold" style={{ textTransform: "capitalize" }}>{card.rarity}</span>
+          </Card.Text>
+          <Button variant="warning" onClick={() => setShowModal(true)}>
+            View Details
+          </Button>
+        </Card.Body>
+      </Card>
+
+      {/* Modal */}
+      <CardDetailsModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        handleClose={handleCloseModal}
+        card={card}
+      />
+    </>
   );
 }
 
