@@ -19,7 +19,7 @@ function CardList() {
   const fetchCards = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://https://clashopia-6ihh.onrender.com/api/cards`, {
+      const response = await axios.get(`https://clashopia-6ihh.onrender.com/api/cards`, {
         params: { page, limit: 15 },
       });
 
