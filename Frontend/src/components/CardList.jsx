@@ -95,7 +95,11 @@ function CardList() {
     }
 
     try {
-      const res = await axios.get('http://localhost:5050/api/cards', {
+      // const res = await axios.get('http://localhost:5050/api/cards', {
+      //   params: { search: trimmed },
+      // });
+
+      const res = await axios.get('https://clashopia-6ihh.onrender.com/api/cards', {
         params: { search: trimmed },
       });
 
