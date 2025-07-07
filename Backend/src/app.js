@@ -7,9 +7,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors({
-    origin: 'https://clashopia.vercel.app',
-}));
+app.use(cors());
 
 // Import routes
 const cardRoutes = require("./routes/cardRoutes"); 
