@@ -40,7 +40,7 @@ function CardList() {
       // });
 
       const newCards = response.data.data;
-      console.log(response.data);
+      // console.log(response.data);
 
 
       // Prevent duplicates using Set
@@ -100,7 +100,7 @@ function CardList() {
       });
 
       setCards(res.data.cards);
-      console.log(res.data.cards);
+      // console.log(res.data.cards);
       // Set the matched cards
       setSearchMode(true);        // Enable search mode
       setHasMore(false);          // Disable load more during search
