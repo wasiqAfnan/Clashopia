@@ -28,7 +28,7 @@ function CardList() {
 
 
   // Fetch cards for a given page number
-  const fetchCards = async () => {
+  const fetchCards = async (pageParam = page) => {
     setLoading(true);
     try {
       const response = await axios.get(`https://clashopia-6ihh.onrender.com/api/cards`, {
@@ -36,34 +36,39 @@ function CardList() {
       });
 
       // const response = await axios.get(`http://localhost:5050/api/cards`, {
-      //   params: { page, limit: 15 },
+      //   params: { page: pageParam, limit: 15 },
       // });
 
       const newCards = response.data.data;
-      console.log(newCards);
+      console.log(response.data);
 
 
       // Prevent duplicates using Set
 
       if (newCards.length > 0) {
-        setCards((prevCards) => {
-          const existingIds = new Set(prevCards.map((card) => card.id));
-          const uniqueCards = newCards.filter((card) => !existingIds.has(card.id));
-          return [...prevCards, ...uniqueCards];
-        });
+        // If it's the first page (reset), replace cards entirely
+        if (pageParam === 1) {
+          setCards(newCards);
+        } else {
+          setCards((prevCards) => {
+            const existingIds = new Set(prevCards.map((card) => card.id));
+            const uniqueCards = newCards.filter((card) => !existingIds.has(card.id));
+            return [...prevCards, ...uniqueCards];
+          });
+        }
 
         if (newCards.length < 15) {
           setHasMore(false);
+        } else {
+          setHasMore(true);
         }
-      }
-
-
-      // If no new cards, we stop further loading
-      if (newCards.length === 0) {
-        setHasMore(false);
       } else {
-        setPage((prev) => prev + 1); // Only increase if data comes
+        setHasMore(false);
       }
+
+      // Update the page state only if not search reset
+      setPage(pageParam + 1);
+
     } catch (error) {
       console.error("Error fetching cards:", error);
     } finally {
@@ -180,7 +185,7 @@ function CardList() {
               !loading && <p className="text-center text-muted mt-4">No cards found.</p>
             )}
           </Row>
-            {/*  */}
+          {/*  */}
           {hasMore && !searchMode && (
             <div className="text-center mt-4 mb-4">
               <Button variant="dark" onClick={handleLoadMore} disabled={loading}>
