@@ -31,13 +31,13 @@ function CardList() {
   const fetchCards = async () => {
     setLoading(true);
     try {
-      // const response = await axios.get(`https://clashopia-6ihh.onrender.com/api/cards`, {
-      //   params: { page, limit: 15 },
-      // });
-
-      const response = await axios.get(`http://localhost:5050/api/cards`, {
+      const response = await axios.get(`https://clashopia-6ihh.onrender.com/api/cards`, {
         params: { page, limit: 15 },
       });
+
+      // const response = await axios.get(`http://localhost:5050/api/cards`, {
+      //   params: { page, limit: 15 },
+      // });
 
       const newCards = response.data.data;
       console.log(newCards);
