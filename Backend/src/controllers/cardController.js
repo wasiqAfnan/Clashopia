@@ -6,6 +6,8 @@ const getCards = async (req, res) => {
         page = Number(page);
         limit = Number(limit);
 
+        const searchQuery = req.query.search?.toLowerCase();
+
         // Validate pagination parameters 
         //  If page<1 or limit<1 then return a proper error message
         if (isNaN(page) || isNaN(limit) || page < 1 || limit < 1) {
@@ -15,7 +17,7 @@ const getCards = async (req, res) => {
         }
 
         // calling fetchcards function to fetch the data from API
-        const data = await cardService.fetchCards(Number(page), Number(limit));
+        const data = await cardService.fetchCards(Number(page), Number(limit), searchQuery);
         res.json(data);
     } catch (error) {
         res.status(500).json({ error: error.message });
