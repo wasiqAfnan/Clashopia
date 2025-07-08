@@ -8,15 +8,15 @@ function CardItem({ card, onModalOpen, onModalClose }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
-  const handleShowModal = (card) => {
-    setSelectedCard(card);
-    setShowModal(true);
-  };
+  // const handleShowModal = (card) => {
+  //   setSelectedCard(card);
+  //   setShowModal(true);
+  // };
 
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedCard(null);
-    if (onModalClose) onModalClose(); // notfying parent about closeness of modal
+    if (onModalClose) onModalClose(); // notfying parent about closeness of
   };
 
 
