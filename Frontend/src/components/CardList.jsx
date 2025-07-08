@@ -24,6 +24,8 @@ function CardList() {
 
   useEffect(() => {
     fetchCards(); // loads page 1
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
 
@@ -115,6 +117,15 @@ function CardList() {
       setLoading(false);
     }
   };
+
+  const handleScroll = () => {
+    if (window.scrollY > 150) {
+      setShowGoUp(true);
+    } else {
+      setShowGoUp(false);
+    }
+  };
+
 
 
 
@@ -211,7 +222,7 @@ function CardList() {
       {/* Go up button */}
       {showGoUp && (
         <Button
-          className="fade-in"
+          className="position-fixed fade-in"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           style={{
             position: 'fixed',
