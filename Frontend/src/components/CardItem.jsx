@@ -1,23 +1,24 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./CardItem.css";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CardDetailsModal from "./cardDetailsModal";
 
-function CardItem({ card }) {
+function CardItem({ card, onModalOpen, onModalClose }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-  
+
   const handleShowModal = (card) => {
     setSelectedCard(card);
     setShowModal(true);
   };
-  
+
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedCard(null);
+    if (onModalClose) onModalClose(); // notfying parent about closeness of modal
   };
-  
+
 
   return (
     <>
@@ -26,14 +27,18 @@ function CardItem({ card }) {
           variant="top"
           src={card.iconUrls?.medium || "/placeholder.jpg"}
           alt={card.name}
-          style={{ height: "200px"}}
+          style={{ height: "200px" }}
         />
         <Card.Body>
           <Card.Title className="fw-bold">{card.name}</Card.Title>
           <Card.Text>
             Rarity: <span className="fw-bold" style={{ textTransform: "capitalize" }}>{card.rarity}</span>
           </Card.Text>
-          <Button variant="warning" onClick={() => setShowModal(true)}>
+          <Button variant="warning" onClick={() => {
+            setShowModal(true); // setting internal varianble true
+            if (onModalOpen) onModalOpen(); // calling onModalOpen() from parent 'CardList.jsx'
+          }
+          }>
             View Details
           </Button>
         </Card.Body>

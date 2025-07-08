@@ -19,6 +19,8 @@ function CardList() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchMode, setSearchMode] = useState(false);
   const [showGoUp, setShowGoUp] = useState(false);
+  const [showAnyModal, setShowAnyModal] = useState(false); // modal state handling to render go up button or not
+
 
 
 
@@ -193,7 +195,11 @@ function CardList() {
             {cards.length > 0 ? (
               cards.map((card) => (
                 <Col key={card.id} sm={12} md={6} lg={4}>
-                  <CardItem card={card} />
+                  <CardItem
+                    card={card}
+                    onModalOpen={() => setShowAnyModal(true)}
+                    onModalClose={() => setShowAnyModal(false)}
+                  />
                 </Col>
               ))
             ) : (
@@ -220,7 +226,7 @@ function CardList() {
       )}
 
       {/* Go up button */}
-      {showGoUp && (
+      {showGoUp && !showAnyModal &&(
         <Button
           className="position-fixed fade-in"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -236,7 +242,7 @@ function CardList() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            zIndex: 9999,
+            zIndex: 999,
             boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
           }}
         >
