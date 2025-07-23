@@ -10,7 +10,7 @@ const fetchCards = async (page = 1, limit = 15, searchQuery) => {
     try {
         const response = await axios.get(`${CLASH_API_URL}/cards`, {
             headers: {
-                "Authorization": `Bearer ${CLASH_ROYALE_API_KEY}`
+                "Authorization": `Bearer ${API_KEY}`
             },
         });
 
