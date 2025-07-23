@@ -30,12 +30,12 @@ function CardList() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
   // Fetch cards for a given page number
   const fetchCards = async (pageParam = page) => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://clashopia-6ihh.onrender.com/api/cards`, {
+      const response = await axios.get(`${backendURL}/api/cards`, {
         params: { page: pageParam, limit: 15 },
       });
 
@@ -103,7 +103,7 @@ function CardList() {
       //   params: { search: trimmed },
       // });
 
-      const res = await axios.get('https://clashopia-6ihh.onrender.com/api/cards', {
+      const res = await axios.get(`${backendURL}/api/cards`, {
         params: { search: trimmed },
       });
 
