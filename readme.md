@@ -23,7 +23,7 @@ Check out the live demo of Clashopia: [Clashopia Live](https://clashopia.vercel.
 
 ## Technologies Used 🛠️
 
-- **Frontend**: React.js, HTML, CSS (Tailwind CSS or any framework of your choice)
+- **Frontend**: React.js, HTML, CSS nad React Bootstrap
 - **Backend**: Node.js, Express.js
 - **API**: [Clash Royale Official API](https://developer.clashroyale.com/)
 - **Deployment**: Vercel (Frontend), Render(Backend)
