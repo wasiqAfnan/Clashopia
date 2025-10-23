@@ -1,20 +1,6 @@
-```markdown
-# Clashopia 🃏⚔️
+### Clashopia 🃏⚔️ [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/27vht.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
 
 **Clashopia** is a dynamic web platform for Clash Royale fans, offering detailed stats and strategies for every card in the game. Built with modern web technologies, Clashopia features a user-friendly interface, a search bar, dynamic card rendering, and a 'Load More' button for seamless exploration. Each card links to a dedicated page with in-depth stats, making it easy to plan your deck and dominate the arena. Dive into Clashopia and take your Clash Royale skills to the next level!
-
----
-
-## Table of Contents 📚
-- [Features](#features-)
-- [Demo](#demo-)
-- [Technologies Used](#technologies-used-)
-- [Installation](#installation-)
-- [Usage](#usage-)
-- [Project Structure](#project-structure-)
-- [Contributing](#contributing-)
-- [License](#license-)
-- [Acknowledgements](#acknowledgements-)
 
 ---
 
@@ -31,8 +17,7 @@
 
 ## Demo 🌐
 
-Check out the live demo of Clashopia: [Clashopia Live](#)  
-*(Replace with your live deployment link once the project is hosted)*
+Check out the live demo of Clashopia: [Clashopia Live](https://clashopia.vercel.app)
 
 ---
 
@@ -54,8 +39,6 @@ To run Clashopia locally, follow these steps:
    ```bash
    git clone https://github.com/your-username/Clashopia.git
    cd Clashopia
-   
-
 2. **Install Dependencies**:
    - For the frontend:
      ```bash
