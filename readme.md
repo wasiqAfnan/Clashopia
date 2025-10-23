@@ -89,7 +89,7 @@ To run Clashopia locally, follow these steps:
 
 ## Project Structure 📂
 
-
+```
 Clashopia/
 ├── backend/                  # Backend server code
 │   ├── controllers/          # Logic for handling API requests
@@ -108,8 +108,6 @@ Clashopia/
 ├── README.md                 # Project documentation
 └── .gitignore                # Files and folders to ignore in Git
 ```
-
----
 
 ## Contributing 🤝
 
