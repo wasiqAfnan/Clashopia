@@ -14,7 +14,7 @@ const fetchCards = async (page = 1, limit = 15, searchQuery) => {
                 "Authorization": `Bearer ${API_KEY}`
             },
         });
-
+        console.log(`${ROYALE_API_PROXY_URL}/cards`);
         const allCards = response.data.items; // Get all cards
         console.log(searchQuery);
         
