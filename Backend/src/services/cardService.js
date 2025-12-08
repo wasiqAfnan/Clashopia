@@ -9,12 +9,12 @@ const API_KEY = process.env.CLASH_ROYALE_API_KEY;
 // Function to fetch Clash Royale card data with pagination
 const fetchCards = async (page = 1, limit = 15, searchQuery) => {
     try {
+        console.log(`${ROYALE_API_PROXY_URL}/cards`);
         const response = await axios.get(`${ROYALE_API_PROXY_URL}/cards`, {
             headers: {
                 "Authorization": `Bearer ${API_KEY}`
             },
         });
-        console.log(`${ROYALE_API_PROXY_URL}/cards`);
         const allCards = response.data.items; // Get all cards
         console.log(searchQuery);
         
