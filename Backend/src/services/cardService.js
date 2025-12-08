@@ -1,14 +1,15 @@
 const axios = require("axios");
 require("dotenv").config();
 
-const CLASH_API_URL = process.env.CLASH_ROYALE_API_URL;
+// const CLASH_API_URL = process.env.CLASH_ROYALE_API_URL;
+const ROYALE_API_PROXY_URL = process.env.ROYALE_API_PROXY_URL;
 const API_KEY = process.env.CLASH_ROYALE_API_KEY;
 
 
 // Function to fetch Clash Royale card data with pagination
 const fetchCards = async (page = 1, limit = 15, searchQuery) => {
     try {
-        const response = await axios.get(`${CLASH_API_URL}/cards`, {
+        const response = await axios.get(`${ROYALE_API_PROXY_URL}/cards`, {
             headers: {
                 "Authorization": `Bearer ${API_KEY}`
             },
